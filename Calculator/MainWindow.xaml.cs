@@ -24,5 +24,11 @@ namespace Calculator
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            inputField.Text = String.Concat(inputField.Text, button.Content.ToString());
+        }
     }
 }
