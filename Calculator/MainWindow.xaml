@@ -31,7 +31,7 @@
         <TextBox x:Name="inputField" Text="" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="4" Height="50" Margin="0,0,0,20"/>
 
         <Button Content="C" Grid.Column="3" Grid.Row="2" Height="40" Margin="10" Click="Button_Click" />
-        <Button Content="Del" Grid.Column="4" Grid.Row="2" Height="40" Margin="10"/>
+        <Button Content="Del" Grid.Column="4" Grid.Row="2" Height="40" Margin="10" Click="Button_Click"/>
 
         <Button Content="7" Grid.Column="1" Grid.Row="3" Height="40" Margin="10" Click="Button_Click" />
         <Button Content="8" Grid.Column="2" Grid.Row="3" Height="40" Margin="10" Click="Button_Click" />

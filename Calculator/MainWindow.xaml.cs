@@ -28,7 +28,25 @@ namespace Calculator
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;
-            inputField.Text = String.Concat(inputField.Text, button.Content.ToString());
+            string buttonContent = button.Content.ToString();
+            string fieldText = inputField.Text;
+
+            switch (buttonContent)
+            {
+                case "C":
+                    inputField.Text = "";
+                    break;
+                case "Del":
+                    if (fieldText.Length > 0)
+                    {
+                        inputField.Text = inputField.Text.Remove(inputField.Text.Length - 1);
+                    }
+                    break;
+                default:
+                    inputField.Text = String.Concat(inputField.Text, buttonContent);
+                    break;
+            }
+            
         }
     }
 }
