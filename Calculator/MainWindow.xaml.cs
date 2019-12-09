@@ -83,16 +83,10 @@ namespace Calculator
 
         private string Evaluate(string inputField)
         {
-            int operatorIndex = inputField.LastIndexOf(this.operation);
-
-            string leftSide = inputField.Substring(0, operatorIndex);
-            string rightSide = inputField.Substring(operatorIndex + 1);
-
             double leftInt = 0;
             double rightInt = 0;
 
-            Double.TryParse(leftSide, out leftInt);
-            Double.TryParse(rightSide, out rightInt);
+            ParseExpression(inputField, out leftInt, out rightInt);
 
             switch (this.operation)
             {
@@ -111,8 +105,20 @@ namespace Calculator
                 default:
                     return "";
             }
+
             this.operationSelected = false;
             return result.ToString();
+        }
+
+        private void ParseExpression(string inputField, out double leftInt, out double rightInt)
+        {
+            int operatorIndex = inputField.LastIndexOf(this.operation);
+
+            string leftSide = inputField.Substring(0, operatorIndex);
+            string rightSide = inputField.Substring(operatorIndex + 1);
+
+            Double.TryParse(leftSide, out leftInt);
+            Double.TryParse(rightSide, out rightInt);
         }
     }
 }
