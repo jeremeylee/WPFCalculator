@@ -35,7 +35,7 @@ namespace Calculator
         {
             Button button = (Button)sender;
             string buttonContent = button.Content.ToString();
-            string fieldText = inputField.Text;
+            int inputLength = inputField.Text.Length;
 
             switch (buttonContent)
             {
@@ -44,21 +44,21 @@ namespace Calculator
                     Clear();
                     break;
                 case "Del":
-                    if (fieldText.Length > 0)
+                    if (inputLength > 0)
                     {
-                        if (inputField.Text[inputField.Text.Length - 1] == '.')
+                        if (inputField.Text[inputLength - 1] == '.')
                         {
                             this.decimalCount--;
-                        } else if (Regex.IsMatch(inputField.Text[inputField.Text.Length - 1].ToString(), @"[\+\-\/\*]"))
+                        } else if (Regex.IsMatch(inputField.Text[inputLength - 1].ToString(), @"[\+\-\/\*]"))
                         {
                             this.operationSelected = false;
                         }
 
-                        inputField.Text = inputField.Text.Remove(inputField.Text.Length - 1);
+                        inputField.Text = inputField.Text.Remove(inputLength - 1);
                     }
                     break;
                 case "=":
-                    if (this.operationSelected && inputField.Text[inputField.Text.Length - 1] != '.')
+                    if (this.operationSelected && inputField.Text[inputLength - 1] != '.')
                     {
                         inputField.Text = Evaluate(inputField.Text);
                     }         
