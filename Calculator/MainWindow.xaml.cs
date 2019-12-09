@@ -46,6 +46,14 @@ namespace Calculator
                 case "Del":
                     if (fieldText.Length > 0)
                     {
+                        if (inputField.Text[inputField.Text.Length - 1] == '.')
+                        {
+                            this.decimalCount--;
+                        } else if (Regex.IsMatch(inputField.Text[inputField.Text.Length - 1].ToString(), @"[\+\-\/\*]"))
+                        {
+                            this.operationSelected = false;
+                        }
+
                         inputField.Text = inputField.Text.Remove(inputField.Text.Length - 1);
                     }
                     break;
