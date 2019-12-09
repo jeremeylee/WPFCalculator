@@ -41,8 +41,7 @@ namespace Calculator
             {
                 case "C":
                     inputField.Text = "";
-                    this.operationSelected = false;
-                    this.decimalCount = 0;
+                    Clear();
                     break;
                 case "Del":
                     if (fieldText.Length > 0)
@@ -62,7 +61,11 @@ namespace Calculator
             }
             
         }
-
+        private void Clear()
+        {
+            this.operationSelected = false;
+            this.decimalCount = 0;
+        }
         private string InputHandler(string buttonContent, string inputField)
         {
             
