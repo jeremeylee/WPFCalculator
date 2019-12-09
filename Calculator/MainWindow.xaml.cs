@@ -90,7 +90,7 @@ namespace Calculator
             if (buttonContent == ".")
             {
                 Console.WriteLine("here");
-                return ValidDecimalUsage(buttonContent);
+                return ValidDecimalUsage(buttonContent, inputField);
             }
 
             return buttonContent;
@@ -112,13 +112,17 @@ namespace Calculator
             }
         }
 
-        private string ValidDecimalUsage(string buttonContent)
+        private string ValidDecimalUsage(string buttonContent, string inputField)
         {
             if (this.decimalCount == 1 && this.operationSelected == false)
             {
                 return "";
             }
             else if (this.decimalCount == 2 && this.operationSelected == true)
+            {
+                return "";
+            } 
+            else if (Regex.IsMatch(inputField[inputField.Length - 1].ToString(), @"[\+\-\/\*]"))
             {
                 return "";
             }
