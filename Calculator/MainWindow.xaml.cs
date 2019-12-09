@@ -62,23 +62,29 @@ namespace Calculator
 
         private string InputHandler(string buttonContent, string inputField)
         {
-            int fieldLength = inputField.Length;
+            
             if (Regex.IsMatch(buttonContent, @"[\+\-\/\*]"))
             {
-                if (fieldLength > 0 && Char.IsNumber(inputField[fieldLength - 1]) && this.operationSelected == false)
-                {
-                    this.operation = buttonContent[0];
-                    this.operationSelected = true;
-                    return buttonContent;
-                } else
-                {
-                    return "";
-                }
-                
+                return ValidOperatorUsage(buttonContent, inputField);
             }
 
             return buttonContent;
 
+        }
+
+        private string ValidOperatorUsage(string buttonContent, string inputField)
+        {
+            int fieldLength = inputField.Length;
+            if (fieldLength > 0 && Char.IsNumber(inputField[fieldLength - 1]) && this.operationSelected == false)
+            {
+                this.operation = buttonContent[0];
+                this.operationSelected = true;
+                return buttonContent;
+            }
+            else
+            {
+                return "";
+            }
         }
 
         private string Evaluate(string inputField)
