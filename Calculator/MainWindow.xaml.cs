@@ -100,7 +100,7 @@ namespace Calculator
                     this.result = leftInt - rightInt;
                     break;
                 case '*':
-                    this.result = leftInt - rightInt;
+                    this.result = leftInt * rightInt;
                     break;
                 case '/':
                     this.result = leftInt / rightInt;
