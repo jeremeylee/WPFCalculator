@@ -108,7 +108,7 @@ namespace Calculator
                 default:
                     return "";
             }
-
+            this.operationSelected = false;
             return result.ToString();
         }
     }
