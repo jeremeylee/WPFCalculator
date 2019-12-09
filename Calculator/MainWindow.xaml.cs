@@ -46,14 +46,7 @@ namespace Calculator
                 case "Del":
                     if (inputLength > 0)
                     {
-                        if (inputField.Text[inputLength - 1] == '.')
-                        {
-                            this.decimalCount--;
-                        } else if (Regex.IsMatch(inputField.Text[inputLength - 1].ToString(), @"[\+\-\/\*]"))
-                        {
-                            this.operationSelected = false;
-                        }
-
+                        DelStates(inputField.Text, inputLength);
                         inputField.Text = inputField.Text.Remove(inputLength - 1);
                     }
                     break;
@@ -73,6 +66,18 @@ namespace Calculator
         {
             this.operationSelected = false;
             this.decimalCount = 0;
+        }
+
+        private void DelStates(string inputField, int inputLength)
+        {
+            if (inputField[inputLength - 1] == '.')
+            {
+                this.decimalCount--;
+            }
+            else if (Regex.IsMatch(inputField[inputLength - 1].ToString(), @"[\+\-\/\*]"))
+            {
+                this.operationSelected = false;
+            }
         }
         private string InputHandler(string buttonContent, string inputField)
         {
