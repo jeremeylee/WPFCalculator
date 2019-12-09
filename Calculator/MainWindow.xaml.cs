@@ -51,8 +51,7 @@ namespace Calculator
                     if (this.operationSelected)
                     {
                         inputField.Text = Evaluate(inputField.Text);
-                    }
-                    
+                    }         
                     break;
                 default:
                     inputField.Text = String.Concat(inputField.Text, InputHandler(buttonContent, inputField.Text));
