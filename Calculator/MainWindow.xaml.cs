@@ -24,6 +24,7 @@ namespace Calculator
 
         private char operation;
         private bool operationSelected = false;
+        private double result = 0;
         public MainWindow()
         {
             InitializeComponent();
@@ -79,8 +80,6 @@ namespace Calculator
 
         private string Evaluate(string inputField)
         {
-            int result = 0;
-
             int operatorIndex = inputField.LastIndexOf(this.operation);
 
             string leftSide = inputField.Substring(0, operatorIndex);
@@ -95,22 +94,21 @@ namespace Calculator
             switch (this.operation)
             {
                 case '+':
-                    result = leftInt + rightInt;
+                    this.result = leftInt + rightInt;
                     break;
                 case '-':
-                    result = leftInt - rightInt;
+                    this.result = leftInt - rightInt;
                     break;
                 case '*':
-                    result = leftInt - rightInt;
+                    this.result = leftInt - rightInt;
                     break;
                 case '/':
-                    result = leftInt / rightInt;
+                    this.result = leftInt / rightInt;
                     break;
                 default:
                     return "";
             }
 
-            Console.WriteLine(result);
             return result.ToString();
         }
     }
