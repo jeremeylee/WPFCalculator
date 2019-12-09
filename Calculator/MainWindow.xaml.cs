@@ -160,7 +160,17 @@ namespace Calculator
             }
 
             this.operationSelected = false;
-            return result.ToString();
+            if (this.result % 1 == 0)
+            {
+                this.decimalCount = 0;
+                int intResult = (int)this.result;
+                return intResult.ToString();
+            } else
+            {
+                this.decimalCount = 1;
+                return this.result.ToString();
+            }
+                 
         }
 
         private void ParseExpression(string inputField, out double leftInt, out double rightInt)
