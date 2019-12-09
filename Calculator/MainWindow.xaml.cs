@@ -47,7 +47,7 @@ namespace Calculator
                     }
                     break;
                 case "=":
-                    Evaluate(inputField.Text);
+                    inputField.Text = Evaluate(inputField.Text);
                     break;
                 default:
                     inputField.Text = String.Concat(inputField.Text, InputHandler(buttonContent, inputField.Text));
@@ -79,29 +79,39 @@ namespace Calculator
 
         private string Evaluate(string inputField)
         {
+            int result = 0;
+
             int operatorIndex = inputField.LastIndexOf(this.operation);
+
             string leftSide = inputField.Substring(0, operatorIndex);
             string rightSide = inputField.Substring(operatorIndex + 1);
+
             int leftInt = 0;
             int rightInt = 0;
+
             Int32.TryParse(leftSide, out leftInt);
             Int32.TryParse(rightSide, out rightInt);
 
             switch (this.operation)
             {
                 case '+':
+                    result = leftInt + rightInt;
                     break;
                 case '-':
+                    result = leftInt - rightInt;
                     break;
                 case '*':
+                    result = leftInt - rightInt;
                     break;
                 case '/':
+                    result = leftInt / rightInt;
                     break;
                 default:
-                    break;
+                    return "";
             }
 
-            return "";
+            Console.WriteLine(result);
+            return result.ToString();
         }
     }
 }
