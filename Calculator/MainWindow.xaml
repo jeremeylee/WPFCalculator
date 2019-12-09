@@ -47,8 +47,9 @@
         <Button Content="2" Grid.Column="2" Grid.Row="5" Height="40" Margin="10" Click="Button_Click" />
         <Button Content="3" Grid.Column="3" Grid.Row="5" Height="40" Margin="10" Click="Button_Click" />
         <Button Content="-" Grid.Column="4" Grid.Row="5" Height="40" Margin="10" Click="Button_Click" />
-
-        <Button Content="0" Grid.Column="2" Grid.Row="6" Height="40" Margin="10" Click="Button_Click" />
+        
+        <Button Content="0" Grid.Column="1" Grid.Row="6" Height="40" Margin="10" Click="Button_Click" />
+        <Button Content="." Grid.Column="2" Grid.Row="6" Height="40" Margin="10" Click="Button_Click" />
         <Button Content="=" Grid.Column="3" Grid.Row="6" Height="40" Margin="10" Click="Button_Click" />
         <Button Content="+" Grid.Column="4" Grid.Row="6" Height="40" Margin="10" Click="Button_Click" />
 

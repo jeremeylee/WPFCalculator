@@ -24,6 +24,7 @@ namespace Calculator
 
         private char operation;
         private bool operationSelected = false;
+        private int decimalCount = 0;
         private double result = 0;
         public MainWindow()
         {
@@ -48,7 +49,7 @@ namespace Calculator
                     }
                     break;
                 case "=":
-                    if (this.operationSelected)
+                    if (this.operationSelected && inputField.Text[inputField.Text.Length - 1] != '.')
                     {
                         inputField.Text = Evaluate(inputField.Text);
                     }         
@@ -68,6 +69,12 @@ namespace Calculator
                 return ValidOperatorUsage(buttonContent, inputField);
             }
 
+            if (buttonContent == ".")
+            {
+                Console.WriteLine("here");
+                return ValidDecimalUsage(buttonContent);
+            }
+
             return buttonContent;
 
         }
@@ -85,6 +92,24 @@ namespace Calculator
             {
                 return "";
             }
+        }
+
+        private string ValidDecimalUsage(string buttonContent)
+        {
+            if (this.decimalCount == 1 && this.operationSelected == false)
+            {
+                return "";
+            }
+            else if (this.decimalCount == 2 && this.operationSelected == true)
+            {
+                return "";
+            }
+            else
+            {
+                this.decimalCount++;
+                return buttonContent;
+            }
+
         }
 
         private string Evaluate(string inputField)
