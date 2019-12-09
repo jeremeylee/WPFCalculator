@@ -89,7 +89,6 @@ namespace Calculator
 
             if (buttonContent == ".")
             {
-                Console.WriteLine("here");
                 return ValidDecimalUsage(buttonContent, inputField);
             }
 
