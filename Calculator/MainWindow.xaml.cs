@@ -21,11 +21,14 @@ namespace Calculator
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        private char operation;
+        private bool operationSelected = false;
         public MainWindow()
         {
             InitializeComponent();
         }
-
+            
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;
@@ -43,9 +46,11 @@ namespace Calculator
                         inputField.Text = inputField.Text.Remove(inputField.Text.Length - 1);
                     }
                     break;
+                case "=":
+                    
+                    break;
                 default:
                     inputField.Text = String.Concat(inputField.Text, InputHandler(buttonContent, inputField.Text));
-                    //inputField.Text = String.Concat(inputField.Text, buttonContent);
                     break;
             }
             
@@ -56,8 +61,10 @@ namespace Calculator
             int fieldLength = inputField.Length;
             if (Regex.IsMatch(buttonContent, @"[\+\-\/\*]"))
             {
-                if (fieldLength > 0 && Char.IsNumber(inputField[fieldLength - 1]))
+                if (fieldLength > 0 && Char.IsNumber(inputField[fieldLength - 1]) && this.operationSelected == false)
                 {
+                    this.operation = buttonContent[0];
+                    this.operationSelected = true;
                     return buttonContent;
                 } else
                 {
