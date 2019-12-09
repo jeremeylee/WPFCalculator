@@ -48,7 +48,11 @@ namespace Calculator
                     }
                     break;
                 case "=":
-                    inputField.Text = Evaluate(inputField.Text);
+                    if (this.operationSelected)
+                    {
+                        inputField.Text = Evaluate(inputField.Text);
+                    }
+                    
                     break;
                 default:
                     inputField.Text = String.Concat(inputField.Text, InputHandler(buttonContent, inputField.Text));
@@ -85,11 +89,11 @@ namespace Calculator
             string leftSide = inputField.Substring(0, operatorIndex);
             string rightSide = inputField.Substring(operatorIndex + 1);
 
-            int leftInt = 0;
-            int rightInt = 0;
+            double leftInt = 0;
+            double rightInt = 0;
 
-            Int32.TryParse(leftSide, out leftInt);
-            Int32.TryParse(rightSide, out rightInt);
+            Double.TryParse(leftSide, out leftInt);
+            Double.TryParse(rightSide, out rightInt);
 
             switch (this.operation)
             {
@@ -103,7 +107,7 @@ namespace Calculator
                     this.result = leftInt * rightInt;
                     break;
                 case '/':
-                    this.result = (double) leftInt / rightInt;
+                    this.result = leftInt / rightInt;
                     break;
                 default:
                     return "";
