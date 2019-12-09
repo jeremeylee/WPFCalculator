@@ -41,6 +41,8 @@ namespace Calculator
             {
                 case "C":
                     inputField.Text = "";
+                    this.operationSelected = false;
+                    this.decimalCount = 0;
                     break;
                 case "Del":
                     if (fieldText.Length > 0)
