@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -43,10 +44,30 @@ namespace Calculator
                     }
                     break;
                 default:
-                    inputField.Text = String.Concat(inputField.Text, buttonContent);
+                    inputField.Text = String.Concat(inputField.Text, InputHandler(buttonContent, inputField.Text));
+                    //inputField.Text = String.Concat(inputField.Text, buttonContent);
                     break;
             }
             
+        }
+
+        private string InputHandler(string buttonContent, string inputField)
+        {
+            int fieldLength = inputField.Length;
+            if (Regex.IsMatch(buttonContent, @"[\+\-\/\*]"))
+            {
+                if (fieldLength > 0 && Char.IsNumber(inputField[fieldLength - 1]))
+                {
+                    return buttonContent;
+                } else
+                {
+                    return "";
+                }
+                
+            }
+
+            return buttonContent;
+
         }
     }
 }
